@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_workshop_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.workshop</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_open_reception_form" 
+                        string="Recepción" 
+                        type="object" 
+                        class="oe_highlight" 
+                        invisible="service_type != 'repair'"/>
+            </xpath>
+
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="repair_status" 
+                       invisible="service_type != 'repair'" 
+                       widget="statusbar" 
+                       options="{'clickable': '1'}" 
+                       class="d-inline-block ms-3 align-middle" 
+                       style="width: auto; height: 35px;"/>
+            </xpath>
+            
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="service_type" widget="radio" options="{'horizontal': true}"/>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="vehicle_id" 
+                       invisible="service_type != 'repair'" 
+                       context="{'default_partner_id': partner_id}"/>
+            </xpath>
+
+            <!-- Ajustar ancho: 2/3 para la primera columna, 1/3 para la segunda -->
+            <xpath expr="//group[@name='sale_header']" position="attributes">
+                <attribute name="col">3</attribute>
+            </xpath>
+            <xpath expr="//group[@name='partner_details']" position="attributes">
+                <attribute name="colspan">2</attribute>
+            </xpath>
+
+
+
+            <xpath expr="//page[@name='order_lines']" position="attributes">
+                <attribute name="invisible">service_type == 'repair'</attribute>
+            </xpath>
+
+            <xpath expr="//page[@name='order_lines']" position="after">
+                <page string="Mano de Obra" invisible="service_type != 'repair'" name="labor_lines">
+                    <field name="labor_line_ids" mode="list" context="{'default_line_category': 'labor', 'default_order_id': id}">
+                        <list editable="bottom">
+                            <field name="product_id"/>
+                            <field name="name"/>
+                            <field name="product_uom_qty" string="Cant."/>
+                            <field name="price_unit"/>
+                            <field name="tax_ids" widget="many2many_tags" optional="hide"/>
+                            <field name="price_subtotal" sum="Total Mano de Obra"/>
+                            <field name="line_category" column_invisible="True"/>
+                        </list>
+                    </field>
+                </page>
+
+                <page string="Repuestos" invisible="service_type != 'repair'" name="parts_lines">
+                    <field name="parts_line_ids" mode="list" context="{'default_line_category': 'parts', 'default_order_id': id}">
+                        <list editable="bottom">
+                            <field name="product_id"/>
+                            <field name="name"/>
+                            <field name="product_uom_qty" string="Cant."/>
+                            <field name="price_unit"/>
+                            <field name="tax_ids" widget="many2many_tags" optional="hide"/>
+                            <field name="price_subtotal" sum="Total Repuestos"/>
+                            <field name="line_category" column_invisible="True"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_sale_order_reception_form" model="ir.ui.view">
+        <field name="name">sale.order.reception.form</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <form string="Recepción" create="false" delete="false">
+                <header>
+                    <button name="action_print_reception_form" type="object" string="Imprimir" class="btn-primary"/>
+                    <button name="action_send_reception_email" type="object" string="Enviar por email" class="btn-secondary"/>
+                    <button name="action_accept_reception" type="object" string="Aceptar" class="btn-success" invisible="reception_accepted"/>
+                    <field name="reception_accepted" invisible="1"/>
+                    <field name="reception_accepted_date" invisible="1"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Datos de Recepción">
+                            <field name="partner_id" invisible="1"/>
+                            <field name="vehicle_id" context="{'default_partner_id': partner_id}"/>
+                            <field name="current_mileage"/>
+                            <field name="fuel_level"/>
+                            <field name="reception_date"/>
+                        </group>
+                        <group string="Condiciones del vehículo">
+                            <field name="bodywork_status"/>
+                            <field name="accessories_included"/>
+                            <field name="dash_warning_lights"/>
+                            <field name="symptom_description"/>
+                            <field name="max_authorized_budget"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="reception_accepted" readonly="1"/>
+                        <field name="reception_accepted_date" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_order_tree_workshop" model="ir.ui.view">
+        <field name="name">sale.order.list.workshop</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <list string="Órdenes de Reparación">
+                <field name="name" string="Número"/>
+                <field name="date_order" widget="date"/>
+                <field name="partner_id"/>
+                <field name="vehicle_id"/>
+                <field name="repair_status" widget="badge" 
+                       decoration-info="repair_status == 'diagnosis'" 
+                       decoration-warning="repair_status == 'waiting_parts'" 
+                       decoration-primary="repair_status == 'in_progress'" 
+                       decoration-success="repair_status in ('ready', 'delivered')"/>
+                <field name="amount_total" sum="Total" widget="monetary"/>
+                <field name="state" decoration-info="state == 'draft'" decoration-success="state == 'sale'" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+</odoo>

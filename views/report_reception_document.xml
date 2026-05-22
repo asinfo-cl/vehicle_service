@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_vehicle_reception_document">
+        <t t-call="web.external_layout">
+            <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
+            <div class="page">
+                <div class="oe_structure"/>
+                
+                <div class="text-center" style="border-bottom: 2px solid black; margin-bottom: 20px;">
+                    <h2>FORMULARIO DE RECEPCIÓN Y ESTADO DEL VEHÍCULO</h2>
+                    <p style="margin: 0; font-weight: 600;">ORDEN DE SERVICIO: <span t-field="doc.name"/></p>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-6">
+                        <strong>CLIENTE:</strong> <span t-field="doc.partner_id.name"/><br/>
+                        <strong>RUT/DNI:</strong> <span t-field="doc.partner_id.vat"/><br/>
+                        <strong>TELÉFONO:</strong> <span t-field="doc.partner_id.phone"/>
+                    </div>
+                    <div class="col-6 text-right">
+                        <strong>VEHÍCULO:</strong> <span t-field="doc.vehicle_id.brand"/> <span t-field="doc.vehicle_id.model_name"/><br/>
+                        <strong>PATENTE:</strong> <span t-field="doc.vehicle_id.license_plate"/><br/>
+                        <strong>KM:</strong> <span t-field="doc.current_mileage"/><br/>
+                        <strong>Combustible:</strong> <span t-field="doc.fuel_level"/>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <h5>Checklist de Recepción</h5>
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Estado de Carrocería</strong></td>
+                                    <td><span t-field="doc.bodywork_status"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Accesorios incluidos</strong></td>
+                                    <td><span t-field="doc.accessories_included"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Testigos en tablero</strong></td>
+                                    <td><span t-field="doc.dash_warning_lights"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Descripción del síntoma/falla</strong></td>
+                                    <td><span t-field="doc.symptom_description"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Presupuesto máximo autorizado</strong></td>
+                                    <td><span t-field="doc.max_authorized_budget"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h5>Aceptación del Cliente</h5>
+                        <p>
+                            El cliente declara haber entregado el vehículo en el estado mencionado en este formulario y autoriza el ingreso al taller para la diagnosis y/o reparación solicitada.
+                        </p>
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Nombre cliente:</strong></td>
+                                    <td><span t-field="doc.partner_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Fecha de recepción:</strong></td>
+                                    <td><span t-field="doc.reception_date"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Condiciones aceptadas:</strong></td>
+                                    <td>Se acepta el estado del vehículo y los datos consignados en este formulario.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <strong>Firma cliente</strong>
+                        <div style="height: 80px; border-bottom: 1px solid #000; margin-top: 30px;"></div>
+                    </div>
+                    <div class="col-6">
+                        <strong>Firma recepción taller</strong>
+                        <div style="height: 80px; border-bottom: 1px solid #000; margin-top: 30px;"></div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="sale_order_report_vehicle_data" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@id='informations']" position="after">
+            <t t-if="doc.service_type == 'repair' and doc.vehicle_id">
+                <div class="row mb-3" id="vehicle_info_block">
+                    <div class="col-6">
+                        <strong>Vehículo:</strong>
+                        <div t-field="doc.vehicle_id.display_name"/>
+                        <div t-if="doc.vehicle_id.brand or doc.vehicle_id.model_name">
+                            <span t-if="doc.vehicle_id.brand" t-field="doc.vehicle_id.brand"/> <span t-if="doc.vehicle_id.model_name" t-field="doc.vehicle_id.model_name"/>
+                        </div>
+                        <div t-if="doc.vehicle_id.license_plate">
+                            <strong>Patente:</strong> <span t-field="doc.vehicle_id.license_plate"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div t-if="doc.current_mileage">
+                            <strong>Kilometraje:</strong> <span t-field="doc.current_mileage"/> KM
+                        </div>
+                        <div t-if="doc.fuel_level">
+                            <strong>Combustible:</strong> <span t-field="doc.fuel_level"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="report_vehicle_reception">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="vehicle_service.report_vehicle_reception_document" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

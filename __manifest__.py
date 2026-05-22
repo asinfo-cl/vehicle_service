@@ -1,0 +1,21 @@
+{
+    'name': 'Vehicle Service Management',
+    'version': '19.0.1.0.0',
+    'category': 'Services/Workshop',
+    'summary': 'Gestión de Taller: Vehículos, RO, Checklist y Pestañas',
+    'author': 'Alvaro - ASINFO',
+    'depends': ['sale', 'sale_management', 'contacts', 'mail'],
+    'data': [
+        'security/ir.model.access.csv',
+        'data/ir_sequence_data.xml',
+        'views/workshop_reports.xml',
+        'views/sale_order_views.xml',
+        'views/vehicle_views.xml',
+        'views/report_reception_document.xml',
+        'views/reception_email_template.xml',
+        'views/sale_portal_templates.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'license': 'LGPL-3',
+}

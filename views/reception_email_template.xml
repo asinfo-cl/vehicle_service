@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="email_template_reception" model="mail.template">
+            <field name="name">Recepción Orden de Servicio</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="subject">Recepción RO {{ object.name }}</field>
+            <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="use_default_to" eval="True"/>
+            <field name="body_html" type="html">
+                <p>Estimado/a <t t-out="object.partner_id.name or ''">Cliente</t>,</p>
+                <p>Adjunto encontrará el documento de recepción de la Orden de Servicio
+                    <strong t-out="object.name or ''">RO-00000</strong>.</p>
+                <p>Saludos cordiales,</p>
+                <p t-out="object.company_id.name or ''">Su empresa</p>
+            </field>
+            <field name="report_template_ids" eval="[(4, ref('vehicle_service.action_report_reception_document'))]"/>
+        </record>
+    </data>
+</odoo>
