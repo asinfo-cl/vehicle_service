@@ -5,8 +5,8 @@
             <t t-if="sale_order.service_type == 'repair'">
                 <div class="row mt-3">
                     <div class="col-12">
-                        <strong>Detalles del Vehículo:</strong>
-                        <p class="m-0">Patente: <span t-field="sale_order.vehicle_id.license_plate"/> | KM: <span t-field="sale_order.current_mileage"/></p>
+                        <strong>Vehicle Details:</strong>
+                        <p class="m-0">License Plate: <span t-field="sale_order.vehicle_id.license_plate"/> | Mileage: <span t-field="sale_order.current_mileage"/></p>
                     </div>
                 </div>
             </t>
@@ -19,7 +19,7 @@
                 <a class="btn btn-secondary btn-block mt-2" 
                    t-att-href="'/report/pdf/vehicle_service.report_vehicle_reception/' + str(sale_order.id)" 
                    target="_blank">
-                    <i class="fa fa-print"/> Imprimir Recepción
+                    <i class="fa fa-print"/> Print Reception
                 </a>
             </t>
         </xpath>

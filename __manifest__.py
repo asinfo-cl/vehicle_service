@@ -2,9 +2,9 @@
     'name': 'Vehicle Service Management',
     'version': '19.0.1.0.3',
     'category': 'Services/Workshop',
-    'summary': 'Gestión de Taller: Vehículos, RO, Checklist y Pestañas',
-    'author': 'Alvaro - ASINFO',
-    'website': 'https://github.com/tuusuario/vehicle-service',
+    'summary': 'Workshop Management: Vehicles, RO, Checklist, and Tabs',
+    'author': 'Álvaro Jiménez Paz',
+    'website': 'https://asinfo.cl',
     'license': 'AGPL-3',
     'depends': ['sale', 'sale_management', 'contacts', 'mail'],
     'data': [

@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
                 <button name="action_open_reception_form" 
-                        string="Recepción" 
+                        string="Reception" 
                         type="object" 
                         class="oe_highlight" 
                         invisible="service_type != 'repair'"/>
@@ -47,71 +47,71 @@
             </xpath>
 
             <xpath expr="//page[@name='order_lines']" position="after">
-                <page string="Mano de Obra" invisible="service_type != 'repair'" name="labor_lines">
+                <page string="Labor" invisible="service_type != 'repair'" name="labor_lines">
                     <field name="labor_line_ids" mode="list" context="{'default_line_category': 'labor', 'default_order_id': id}">
                         <list editable="bottom">
                             <field name="product_id"/>
                             <field name="name"/>
-                            <field name="product_uom_qty" string="Cant."/>
+                            <field name="product_uom_qty" string="Qty."/>
                             <field name="price_unit"/>
                             <field name="tax_ids" widget="many2many_tags" optional="hide"/>
-                            <field name="price_subtotal" sum="Total Mano de Obra"/>
+                            <field name="price_subtotal" sum="Total Labor"/>
                             <field name="line_category" column_invisible="True"/>
                         </list>
                     </field>
                 </page>
 
-                <page string="Repuestos" invisible="service_type != 'repair'" name="parts_lines">
+                <page string="Parts" invisible="service_type != 'repair'" name="parts_lines">
                     <field name="parts_line_ids" mode="list" context="{'default_line_category': 'parts', 'default_order_id': id}">
                         <list editable="bottom">
                             <field name="product_id"/>
                             <field name="name"/>
-                            <field name="product_uom_qty" string="Cant."/>
+                            <field name="product_uom_qty" string="Qty."/>
                             <field name="price_unit"/>
                             <field name="tax_ids" widget="many2many_tags" optional="hide"/>
-                            <field name="price_subtotal" sum="Total Repuestos"/>
+                            <field name="price_subtotal" sum="Total Parts"/>
                             <field name="line_category" column_invisible="True"/>
                         </list>
                     </field>
                 </page>
 
-                <page string="Terceros" invisible="service_type != 'repair'" name="third_party_lines">
+                <page string="Third Party" invisible="service_type != 'repair'" name="third_party_lines">
                     <field name="third_party_line_ids" mode="list" context="{'default_line_category': 'third_party', 'default_order_id': id}">
                         <list editable="bottom">
                             <field name="product_id"/>
                             <field name="name"/>
-                            <field name="product_uom_qty" string="Cant."/>
+                            <field name="product_uom_qty" string="Qty."/>
                             <field name="price_unit"/>
                             <field name="tax_ids" widget="many2many_tags" optional="hide"/>
-                            <field name="price_subtotal" sum="Total Terceros"/>
+                            <field name="price_subtotal" sum="Total Third Party"/>
                             <field name="line_category" column_invisible="True"/>
                         </list>
                     </field>
                 </page>
 
-                <page string="Insumos" invisible="service_type != 'repair'" name="supplies_lines">
+                <page string="Supplies" invisible="service_type != 'repair'" name="supplies_lines">
                     <field name="supplies_line_ids" mode="list" context="{'default_line_category': 'supplies', 'default_order_id': id}">
                         <list editable="bottom">
                             <field name="product_id"/>
                             <field name="name"/>
-                            <field name="product_uom_qty" string="Cant."/>
+                            <field name="product_uom_qty" string="Qty."/>
                             <field name="price_unit"/>
                             <field name="tax_ids" widget="many2many_tags" optional="hide"/>
-                            <field name="price_subtotal" sum="Total Insumos"/>
+                            <field name="price_subtotal" sum="Total Supplies"/>
                             <field name="line_category" column_invisible="True"/>
                         </list>
                     </field>
                 </page>
 
-                <page string="Otros" invisible="service_type != 'repair'" name="other_lines">
+                <page string="Others" invisible="service_type != 'repair'" name="other_lines">
                     <field name="other_line_ids" mode="list" context="{'default_line_category': 'others', 'default_order_id': id}">
                         <list editable="bottom">
                             <field name="product_id"/>
                             <field name="name"/>
-                            <field name="product_uom_qty" string="Cant."/>
+                            <field name="product_uom_qty" string="Qty."/>
                             <field name="price_unit"/>
                             <field name="tax_ids" widget="many2many_tags" optional="hide"/>
-                            <field name="price_subtotal" sum="Total Otros"/>
+                            <field name="price_subtotal" sum="Total Others"/>
                             <field name="line_category" column_invisible="True"/>
                         </list>
                     </field>
@@ -124,24 +124,24 @@
         <field name="name">sale.order.reception.form</field>
         <field name="model">sale.order</field>
         <field name="arch" type="xml">
-            <form string="Recepción" create="false" delete="false">
+            <form string="Reception" create="false" delete="false">
                 <header>
-                    <button name="action_print_reception_form" type="object" string="Imprimir" class="btn-primary"/>
-                    <button name="action_send_reception_email" type="object" string="Enviar por email" class="btn-secondary"/>
-                    <button name="action_accept_reception" type="object" string="Aceptar" class="btn-success" invisible="reception_accepted"/>
+                    <button name="action_print_reception_form" type="object" string="Print" class="btn-primary"/>
+                    <button name="action_send_reception_email" type="object" string="Send by Email" class="btn-secondary"/>
+                    <button name="action_accept_reception" type="object" string="Accept" class="btn-success" invisible="reception_accepted"/>
                     <field name="reception_accepted" invisible="1"/>
                     <field name="reception_accepted_date" invisible="1"/>
                 </header>
                 <sheet>
                     <group>
-                        <group string="Datos de Recepción">
+                        <group string="Reception Data">
                             <field name="partner_id" invisible="1"/>
                             <field name="vehicle_id" context="{'default_partner_id': partner_id}"/>
                             <field name="current_mileage"/>
                             <field name="fuel_level"/>
                             <field name="reception_date"/>
                         </group>
-                        <group string="Condiciones del vehículo">
+                        <group string="Vehicle Condition">
                             <field name="bodywork_status"/>
                             <field name="accessories_included"/>
                             <field name="dash_warning_lights"/>
@@ -162,8 +162,8 @@
         <field name="name">sale.order.list.workshop</field>
         <field name="model">sale.order</field>
         <field name="arch" type="xml">
-            <list string="Órdenes de Reparación">
-                <field name="name" string="Número"/>
+            <list string="Repair Orders">
+                <field name="name" string="Number"/>
                 <field name="date_order" widget="date"/>
                 <field name="partner_id"/>
                 <field name="vehicle_id"/>

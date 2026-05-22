@@ -1,10 +1,10 @@
-Este módulo permite gestionar un taller de reparación de vehículos.
-Proporciona funcionalidades para:
+This module allows managing a vehicle repair workshop.
+It provides functionalities for:
 
-- Registro de vehículos con datos completos (patente, marca, modelo, VIN, etc.)
-- Órdenes de reparación (RO) vinculadas a vehículos y clientes
-- Checklist de recepción con estado de carrocería, accesorios y testigos
-- Presupuesto máximo autorizado
-- Categorización de líneas de pedido: Mano de Obra, Repuestos, Terceros, Insumos y Otros
-- Envío de documentos de recepción por email
-- Impresión de formularios de recepción
+- Vehicle registration with complete data (license plate, brand, model, VIN, etc.)
+- Repair Orders (RO) linked to vehicles and customers
+- Reception checklist with bodywork status, accessories, and warning lights
+- Maximum authorized budget
+- Order line categorization: Labor, Parts, Third Party, Supplies, and Others
+- Sending reception documents by email
+- Printing reception forms

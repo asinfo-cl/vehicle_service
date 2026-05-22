@@ -4,62 +4,62 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     service_type = fields.Selection([
-        ('sale', 'Venta Normal'),
+        ('sale', 'Normal Sale'),
         ('repair', 'Repair Order')
-    ], string='Tipo de Servicio', default='repair', required=True)
+    ], string='Service Type', default='repair', required=True)
 
     repair_status = fields.Selection([
-        ('diagnosis', 'Diagnóstico'),
-        ('waiting_parts', 'Esperando Repuestos'),
-        ('in_progress', 'En Reparación'),
-        ('ready', 'Listo para Entrega'),
-        ('delivered', 'Entregado'),
-    ], string='Estado de Reparación', tracking=True, default='diagnosis')
+        ('diagnosis', 'Diagnosis'),
+        ('waiting_parts', 'Waiting for Parts'),
+        ('in_progress', 'In Progress'),
+        ('ready', 'Ready for Delivery'),
+        ('delivered', 'Delivered'),
+    ], string='Repair Status', tracking=True, default='diagnosis')
 
     vehicle_id = fields.Many2one(
         'workshop.vehicle', 
-        string='Vehículo',
+        string='Vehicle',
         domain="[('partner_id', '=', partner_id)]"
     )
     
-    vehicle_brand = fields.Char(related='vehicle_id.brand', string='Marca', readonly=True)
-    vehicle_model = fields.Char(related='vehicle_id.model_name', string='Modelo', readonly=True)
-    vehicle_year = fields.Integer(related='vehicle_id.year', string='Año', readonly=True)
+    vehicle_brand = fields.Char(related='vehicle_id.brand', string='Brand', readonly=True)
+    vehicle_model = fields.Char(related='vehicle_id.model_name', string='Model', readonly=True)
+    vehicle_year = fields.Integer(related='vehicle_id.year', string='Year', readonly=True)
     vehicle_color = fields.Char(related='vehicle_id.color', string='Color', readonly=True)
     
-    current_mileage = fields.Integer(string='Kilometraje')
+    current_mileage = fields.Integer(string='Mileage')
     fuel_level = fields.Selection([
         ('0','0%'),('25','25%'),('50','50%'),('75','75%'),('100','100%')
-    ], string='Combustible', default='50')
-    reception_date = fields.Datetime(string='Fecha de Recepción', default=fields.Datetime.now)
-    reception_accepted = fields.Boolean(string='Recepción Aceptada')
-    reception_accepted_date = fields.Datetime(string='Fecha Aceptación')
+    ], string='Fuel Level', default='50')
+    reception_date = fields.Datetime(string='Reception Date', default=fields.Datetime.now)
+    reception_accepted = fields.Boolean(string='Reception Accepted')
+    reception_accepted_date = fields.Datetime(string='Acceptance Date')
     
-    bodywork_status = fields.Text(string='Estado Carrocería')
-    accessories_included = fields.Char(string='Accesorios')
-    dash_warning_lights = fields.Char(string='Testigos Tablero')
-    symptom_description = fields.Text(string='Descripción del Síntoma / Falla')
-    max_authorized_budget = fields.Float(string='Presupuesto Máximo')
+    bodywork_status = fields.Text(string='Bodywork Status')
+    accessories_included = fields.Char(string='Accessories')
+    dash_warning_lights = fields.Char(string='Dashboard Warning Lights')
+    symptom_description = fields.Text(string='Symptom / Fault Description')
+    max_authorized_budget = fields.Float(string='Maximum Authorized Budget')
 
-    # ESTOS CAMPOS SEPARAN LAS PESTAÑAS FÍSICAMENTE
+    # THESE FIELDS PHYSICALLY SEPARATE THE TABS
     labor_line_ids = fields.One2many('sale.order.line', 'order_id', 
-                                    string='Líneas de Mano de Obra', 
+                                    string='Labor Lines', 
                                     domain=[('line_category', '=', 'labor'), ('display_type', '=', False)])
     
     parts_line_ids = fields.One2many('sale.order.line', 'order_id', 
-                                    string='Líneas de Repuestos', 
+                                    string='Parts Lines', 
                                     domain=[('line_category', '=', 'parts'), ('display_type', '=', False)])
 
     third_party_line_ids = fields.One2many('sale.order.line', 'order_id',
-                                    string='Líneas de Terceros',
+                                    string='Third-party Lines',
                                     domain=[('line_category', '=', 'third_party'), ('display_type', '=', False)])
 
     supplies_line_ids = fields.One2many('sale.order.line', 'order_id',
-                                    string='Líneas de Insumos',
+                                    string='Supplies Lines',
                                     domain=[('line_category', '=', 'supplies'), ('display_type', '=', False)])
 
     other_line_ids = fields.One2many('sale.order.line', 'order_id',
-                                    string='Otras Líneas',
+                                    string='Other Lines',
                                     domain=[('line_category', '=', 'others'), ('display_type', '=', False)])
 
     @api.onchange('partner_id')
@@ -90,11 +90,11 @@ class SaleOrder(models.Model):
 
     def _repair_section_commands(self):
         return [
-            (0, 0, self._prepare_repair_section_line('Mano de Obra', 'labor')),
-            (0, 0, self._prepare_repair_section_line('Repuestos', 'parts')),
-            (0, 0, self._prepare_repair_section_line('Terceros', 'third_party')),
-            (0, 0, self._prepare_repair_section_line('Insumos', 'supplies')),
-            (0, 0, self._prepare_repair_section_line('Otros', 'others')),
+            (0, 0, self._prepare_repair_section_line('Labor', 'labor')),
+            (0, 0, self._prepare_repair_section_line('Parts', 'parts')),
+            (0, 0, self._prepare_repair_section_line('Third Party', 'third_party')),
+            (0, 0, self._prepare_repair_section_line('Supplies', 'supplies')),
+            (0, 0, self._prepare_repair_section_line('Others', 'others')),
         ]
 
     @api.model_create_multi
@@ -108,8 +108,8 @@ class SaleOrder(models.Model):
                     for line in order_lines
                 ):
                     order_lines = [
-                        (0, 0, self._prepare_repair_section_line('Mano de Obra', 'labor')),
-                        (0, 0, self._prepare_repair_section_line('Repuestos', 'parts')),
+                        (0, 0, self._prepare_repair_section_line('Labor', 'labor')),
+                        (0, 0, self._prepare_repair_section_line('Parts', 'parts')),
                     ] + order_lines
                     vals['order_line'] = order_lines
             if vals.get('service_type') == 'repair' and vals.get('name', _('New')) == _('New'):
@@ -124,11 +124,11 @@ class SaleOrder(models.Model):
                         lambda l: l.display_type == 'line_section'
                     )
                     section_map = {
-                        'labor': 'Mano de Obra',
-                        'parts': 'Repuestos',
-                        'third_party': 'Terceros',
-                        'supplies': 'Insumos',
-                        'others': 'Otros',
+                        'labor': 'Labor',
+                        'parts': 'Parts',
+                        'third_party': 'Third Party',
+                        'supplies': 'Supplies',
+                        'others': 'Others',
                     }
                     for cat, name in section_map.items():
                         if not existing_sections.filtered(lambda l, c=cat: l.line_category == c):
@@ -162,7 +162,7 @@ class SaleOrder(models.Model):
     def action_open_reception_form(self):
         self.ensure_one()
         return {
-            'name': 'Recepción',
+            'name': 'Reception',
             'type': 'ir.actions.act_window',
             'res_model': 'sale.order',
             'view_mode': 'form',
@@ -188,7 +188,7 @@ class SaleOrder(models.Model):
             'default_composition_mode': 'comment',
         }
         return {
-            'name': 'Enviar Recepción',
+            'name': 'Send Reception',
             'type': 'ir.actions.act_window',
             'view_mode': 'form',
             'res_model': 'mail.compose.message',
@@ -208,12 +208,12 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
     
     line_category = fields.Selection([
-        ('labor','Mano de Obra'),
-        ('parts','Repuestos'),
-        ('third_party','Terceros'),
-        ('supplies','Insumos'),
-        ('others','Otros')
-    ], string="Categoría", default='others')
+        ('labor','Labor'),
+        ('parts','Parts'),
+        ('third_party','Third Party'),
+        ('supplies','Supplies'),
+        ('others','Others')
+    ], string="Category", default='others')
 
     def _repair_section_sequence(self):
         if self.display_type == 'line_section':

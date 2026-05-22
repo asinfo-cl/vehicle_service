@@ -7,47 +7,47 @@
                 <div class="oe_structure"/>
                 
                 <div class="text-center" style="border-bottom: 2px solid black; margin-bottom: 20px;">
-                    <h2>FORMULARIO DE RECEPCIÓN Y ESTADO DEL VEHÍCULO</h2>
-                    <p style="margin: 0; font-weight: 600;">ORDEN DE SERVICIO: <span t-field="doc.name"/></p>
+                    <h2>VEHICLE RECEPTION AND CONDITION FORM</h2>
+                    <p style="margin: 0; font-weight: 600;">SERVICE ORDER: <span t-field="doc.name"/></p>
                 </div>
 
                 <div class="row mt-4">
                     <div class="col-6">
-                        <strong>CLIENTE:</strong> <span t-field="doc.partner_id.name"/><br/>
-                        <strong>RUT/DNI:</strong> <span t-field="doc.partner_id.vat"/><br/>
-                        <strong>TELÉFONO:</strong> <span t-field="doc.partner_id.phone"/>
+                        <strong>CUSTOMER:</strong> <span t-field="doc.partner_id.name"/><br/>
+                        <strong>ID/TAX ID:</strong> <span t-field="doc.partner_id.vat"/><br/>
+                        <strong>PHONE:</strong> <span t-field="doc.partner_id.phone"/>
                     </div>
                     <div class="col-6 text-right">
-                        <strong>VEHÍCULO:</strong> <span t-field="doc.vehicle_id.brand"/> <span t-field="doc.vehicle_id.model_name"/><br/>
-                        <strong>PATENTE:</strong> <span t-field="doc.vehicle_id.license_plate"/><br/>
-                        <strong>KM:</strong> <span t-field="doc.current_mileage"/><br/>
-                        <strong>Combustible:</strong> <span t-field="doc.fuel_level"/>
+                        <strong>VEHICLE:</strong> <span t-field="doc.vehicle_id.brand"/> <span t-field="doc.vehicle_id.model_name"/><br/>
+                        <strong>LICENSE PLATE:</strong> <span t-field="doc.vehicle_id.license_plate"/><br/>
+                        <strong>MILEAGE:</strong> <span t-field="doc.current_mileage"/><br/>
+                        <strong>Fuel:</strong> <span t-field="doc.fuel_level"/>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-12">
-                        <h5>Checklist de Recepción</h5>
+                        <h5>Reception Checklist</h5>
                         <table class="table table-sm">
                             <tbody>
                                 <tr>
-                                    <td><strong>Estado de Carrocería</strong></td>
+                                    <td><strong>Bodywork Status</strong></td>
                                     <td><span t-field="doc.bodywork_status"/></td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Accesorios incluidos</strong></td>
+                                    <td><strong>Accessories Included</strong></td>
                                     <td><span t-field="doc.accessories_included"/></td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Testigos en tablero</strong></td>
+                                    <td><strong>Dashboard Warning Lights</strong></td>
                                     <td><span t-field="doc.dash_warning_lights"/></td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Descripción del síntoma/falla</strong></td>
+                                    <td><strong>Symptom / Fault Description</strong></td>
                                     <td><span t-field="doc.symptom_description"/></td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Presupuesto máximo autorizado</strong></td>
+                                    <td><strong>Maximum Authorized Budget</strong></td>
                                     <td><span t-field="doc.max_authorized_budget"/></td>
                                 </tr>
                             </tbody>
@@ -57,23 +57,23 @@
 
                 <div class="row mt-4">
                     <div class="col-12">
-                        <h5>Aceptación del Cliente</h5>
+                        <h5>Customer Acceptance</h5>
                         <p>
-                            El cliente declara haber entregado el vehículo en el estado mencionado en este formulario y autoriza el ingreso al taller para la diagnosis y/o reparación solicitada.
+                            The customer declares having delivered the vehicle in the condition mentioned in this form and authorizes the workshop to proceed with the requested diagnosis and/or repair.
                         </p>
                         <table class="table table-sm">
                             <tbody>
                                 <tr>
-                                    <td><strong>Nombre cliente:</strong></td>
+                                    <td><strong>Customer Name:</strong></td>
                                     <td><span t-field="doc.partner_id.name"/></td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Fecha de recepción:</strong></td>
+                                    <td><strong>Reception Date:</strong></td>
                                     <td><span t-field="doc.reception_date"/></td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Condiciones aceptadas:</strong></td>
-                                    <td>Se acepta el estado del vehículo y los datos consignados en este formulario.</td>
+                                    <td><strong>Conditions Accepted:</strong></td>
+                                    <td>The vehicle condition and data recorded in this form are accepted.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -84,11 +84,11 @@
 
                 <div class="row mt-5">
                     <div class="col-6">
-                        <strong>Firma cliente</strong>
+                        <strong>Customer Signature</strong>
                         <div style="height: 80px; border-bottom: 1px solid #000; margin-top: 30px;"></div>
                     </div>
                     <div class="col-6">
-                        <strong>Firma recepción taller</strong>
+                        <strong>Workshop Reception Signature</strong>
                         <div style="height: 80px; border-bottom: 1px solid #000; margin-top: 30px;"></div>
                     </div>
                 </div>
@@ -101,18 +101,18 @@
             <t t-if="doc.service_type == 'repair' and doc.vehicle_id">
                 <div class="row mb-3" id="vehicle_info_block">
                     <div class="col-6">
-                        <strong>Vehículo:</strong>
+                        <strong>Vehicle:</strong>
                         <div t-field="doc.vehicle_id.display_name"/>
                         <div t-if="doc.vehicle_id.license_plate">
-                            <strong>Patente:</strong> <span t-field="doc.vehicle_id.license_plate"/>
+                            <strong>License Plate:</strong> <span t-field="doc.vehicle_id.license_plate"/>
                         </div>
                     </div>
                     <div class="col-6">
                         <div t-if="doc.current_mileage">
-                            <strong>Kilometraje:</strong> <span t-field="doc.current_mileage"/> KM
+                            <strong>Mileage:</strong> <span t-field="doc.current_mileage"/> KM
                         </div>
                         <div t-if="doc.fuel_level">
-                            <strong>Combustible:</strong> <span t-field="doc.fuel_level"/>
+                            <strong>Fuel:</strong> <span t-field="doc.fuel_level"/>
                         </div>
                     </div>
                 </div>

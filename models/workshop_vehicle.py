@@ -6,19 +6,19 @@ class WorkshopVehicle(models.Model):
     _description = 'Vehicle Record'
     _rec_names_search = ['license_plate', 'brand', 'model_name', 'partner_id.name']
 
-    license_plate = fields.Char(string='Patente', required=True)
-    brand = fields.Char(string='Marca')
-    model_name = fields.Char(string='Modelo y Versión')
-    year = fields.Integer(string='Año de Fabricación')
+    license_plate = fields.Char(string='License Plate', required=True)
+    brand = fields.Char(string='Brand')
+    model_name = fields.Char(string='Model and Version')
+    year = fields.Integer(string='Manufacturing Year')
     color = fields.Char(string='Color')
-    vin_number = fields.Char(string='VIN / Chasis')
-    engine_type = fields.Char(string='Motor / Combustible')
-    partner_id = fields.Many2one('res.partner', string='Cliente', required=True)
-    repair_order_ids = fields.One2many('sale.order', 'vehicle_id', string='Historial RO')
+    vin_number = fields.Char(string='VIN / Chassis')
+    engine_type = fields.Char(string='Engine / Fuel Type')
+    partner_id = fields.Many2one('res.partner', string='Customer', required=True)
+    repair_order_ids = fields.One2many('sale.order', 'vehicle_id', string='RO History')
 
     _license_plate_unique = models.Constraint(
         'unique(license_plate)',
-        '¡La patente ya existe!',
+        'The license plate already exists!',
     )
 
     @api.depends('brand', 'model_name', 'year', 'color', 'license_plate')
