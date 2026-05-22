@@ -4,6 +4,8 @@
     'category': 'Services/Workshop',
     'summary': 'Gestión de Taller: Vehículos, RO, Checklist y Pestañas',
     'author': 'Alvaro - ASINFO',
+    'website': 'https://github.com/tuusuario/vehicle-service',
+    'license': 'AGPL-3',
     'depends': ['sale', 'sale_management', 'contacts', 'mail'],
     'data': [
         'security/ir.model.access.csv',
@@ -15,7 +17,12 @@
         'views/reception_email_template.xml',
         'views/sale_portal_templates.xml',
     ],
+    'demo': [],
+    'images': [],
+    'post_init_hook': 'post_init_hook',
     'installable': True,
     'application': True,
-    'license': 'LGPL-3',
+    'external_dependencies': {
+        'python': [],
+    },
 }
