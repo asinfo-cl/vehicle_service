@@ -52,7 +52,7 @@
     <record id="action_workshop_repair_orders" model="ir.actions.act_window">
         <field name="name">Órdenes de Reparación</field>
         <field name="res_model">sale.order</field>
-        <field name="view_mode">list,form,kanban</field>
+        <field name="view_mode">list,form</field>
         <field name="domain">[('service_type', '=', 'repair')]</field>
         <field name="context">{'default_service_type': 'repair'}</field>
         <field name="view_ids" eval="[(5, 0, 0),

@@ -50,6 +50,18 @@ class SaleOrder(models.Model):
                                     string='Líneas de Repuestos', 
                                     domain=[('line_category', '=', 'parts'), ('display_type', '=', False)])
 
+    third_party_line_ids = fields.One2many('sale.order.line', 'order_id',
+                                    string='Líneas de Terceros',
+                                    domain=[('line_category', '=', 'third_party'), ('display_type', '=', False)])
+
+    supplies_line_ids = fields.One2many('sale.order.line', 'order_id',
+                                    string='Líneas de Insumos',
+                                    domain=[('line_category', '=', 'supplies'), ('display_type', '=', False)])
+
+    other_line_ids = fields.One2many('sale.order.line', 'order_id',
+                                    string='Otras Líneas',
+                                    domain=[('line_category', '=', 'others'), ('display_type', '=', False)])
+
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
         for order in self:
@@ -60,6 +72,9 @@ class SaleOrder(models.Model):
         section_sequences = {
             'labor': 1,
             'parts': 101,
+            'third_party': 201,
+            'supplies': 301,
+            'others': 401,
         }
         return {
             'display_type': 'line_section',
@@ -77,6 +92,9 @@ class SaleOrder(models.Model):
         return [
             (0, 0, self._prepare_repair_section_line('Mano de Obra', 'labor')),
             (0, 0, self._prepare_repair_section_line('Repuestos', 'parts')),
+            (0, 0, self._prepare_repair_section_line('Terceros', 'third_party')),
+            (0, 0, self._prepare_repair_section_line('Insumos', 'supplies')),
+            (0, 0, self._prepare_repair_section_line('Otros', 'others')),
         ]
 
     @api.model_create_multi
@@ -102,20 +120,44 @@ class SaleOrder(models.Model):
         if 'service_type' in vals:
             for order in self:
                 if vals.get('service_type') == 'repair':
-                    if not order.order_line.filtered(lambda l: l.display_type == 'line_section'):
-                        self.env['sale.order.line'].create({
-                            'order_id': order.id,
-                            **self._prepare_repair_section_line('Mano de Obra', 'labor'),
-                        })
-                        self.env['sale.order.line'].create({
-                            'order_id': order.id,
-                            **self._prepare_repair_section_line('Repuestos', 'parts'),
-                        })
+                    existing_sections = order.order_line.filtered(
+                        lambda l: l.display_type == 'line_section'
+                    )
+                    section_map = {
+                        'labor': 'Mano de Obra',
+                        'parts': 'Repuestos',
+                        'third_party': 'Terceros',
+                        'supplies': 'Insumos',
+                        'others': 'Otros',
+                    }
+                    for cat, name in section_map.items():
+                        if not existing_sections.filtered(lambda l, c=cat: l.line_category == c):
+                            self.env['sale.order.line'].create({
+                                'order_id': order.id,
+                                **self._prepare_repair_section_line(name, cat),
+                            })
                 else:
-                    section_lines = order.order_line.filtered(lambda l: l.display_type == 'line_section' and l.line_category in ('labor', 'parts'))
+                    section_lines = order.order_line.filtered(
+                        lambda l: l.display_type == 'line_section' and l.line_category in ('labor', 'parts', 'third_party', 'supplies', 'others')
+                    )
                     if section_lines:
                         section_lines.unlink()
         return super().write(vals)
+
+    def _get_order_lines_to_report(self):
+        res = super()._get_order_lines_to_report()
+        if self.service_type != 'repair':
+            return res
+        to_remove = self.env['sale.order.line']
+        for line in res:
+            if line.display_type == 'line_section':
+                has_details = any(
+                    l.line_category == line.line_category and not l.display_type
+                    for l in res
+                )
+                if not has_details:
+                    to_remove += line
+        return res - to_remove
 
     def action_open_reception_form(self):
         self.ensure_one()
@@ -178,6 +220,9 @@ class SaleOrderLine(models.Model):
             return {
                 'labor': 1,
                 'parts': 101,
+                'third_party': 201,
+                'supplies': 301,
+                'others': 401,
             }.get(self.line_category, 1000)
         return {
             'labor': 10,
@@ -198,10 +243,14 @@ class SaleOrderLine(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         lines = super().create(vals_list)
-        lines._repair_fix_sequence()
+        repair_lines = lines.filtered(lambda l: l.order_id.service_type == 'repair')
+        if repair_lines:
+            repair_lines._repair_fix_sequence()
         return lines
 
     def write(self, vals):
         res = super().write(vals)
-        self._repair_fix_sequence()
+        repair_lines = self.filtered(lambda l: l.order_id.service_type == 'repair')
+        if repair_lines:
+            repair_lines._repair_fix_sequence()
         return res

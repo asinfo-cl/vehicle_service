@@ -1,6 +1,6 @@
 {
     'name': 'Vehicle Service Management',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.3',
     'category': 'Services/Workshop',
     'summary': 'Gestión de Taller: Vehículos, RO, Checklist y Pestañas',
     'author': 'Alvaro - ASINFO',

@@ -4,7 +4,7 @@ from odoo import models, fields, api
 class WorkshopVehicle(models.Model):
     _name = 'workshop.vehicle'
     _description = 'Vehicle Record'
-    _rec_names_search = ['license_plate', 'brand', 'model_name', 'partner_id']
+    _rec_names_search = ['license_plate', 'brand', 'model_name', 'partner_id.name']
 
     license_plate = fields.Char(string='Patente', required=True)
     brand = fields.Char(string='Marca')

@@ -74,6 +74,48 @@
                         </list>
                     </field>
                 </page>
+
+                <page string="Terceros" invisible="service_type != 'repair'" name="third_party_lines">
+                    <field name="third_party_line_ids" mode="list" context="{'default_line_category': 'third_party', 'default_order_id': id}">
+                        <list editable="bottom">
+                            <field name="product_id"/>
+                            <field name="name"/>
+                            <field name="product_uom_qty" string="Cant."/>
+                            <field name="price_unit"/>
+                            <field name="tax_ids" widget="many2many_tags" optional="hide"/>
+                            <field name="price_subtotal" sum="Total Terceros"/>
+                            <field name="line_category" column_invisible="True"/>
+                        </list>
+                    </field>
+                </page>
+
+                <page string="Insumos" invisible="service_type != 'repair'" name="supplies_lines">
+                    <field name="supplies_line_ids" mode="list" context="{'default_line_category': 'supplies', 'default_order_id': id}">
+                        <list editable="bottom">
+                            <field name="product_id"/>
+                            <field name="name"/>
+                            <field name="product_uom_qty" string="Cant."/>
+                            <field name="price_unit"/>
+                            <field name="tax_ids" widget="many2many_tags" optional="hide"/>
+                            <field name="price_subtotal" sum="Total Insumos"/>
+                            <field name="line_category" column_invisible="True"/>
+                        </list>
+                    </field>
+                </page>
+
+                <page string="Otros" invisible="service_type != 'repair'" name="other_lines">
+                    <field name="other_line_ids" mode="list" context="{'default_line_category': 'others', 'default_order_id': id}">
+                        <list editable="bottom">
+                            <field name="product_id"/>
+                            <field name="name"/>
+                            <field name="product_uom_qty" string="Cant."/>
+                            <field name="price_unit"/>
+                            <field name="tax_ids" widget="many2many_tags" optional="hide"/>
+                            <field name="price_subtotal" sum="Total Otros"/>
+                            <field name="line_category" column_invisible="True"/>
+                        </list>
+                    </field>
+                </page>
             </xpath>
         </field>
     </record>

@@ -103,9 +103,6 @@
                     <div class="col-6">
                         <strong>Vehículo:</strong>
                         <div t-field="doc.vehicle_id.display_name"/>
-                        <div t-if="doc.vehicle_id.brand or doc.vehicle_id.model_name">
-                            <span t-if="doc.vehicle_id.brand" t-field="doc.vehicle_id.brand"/> <span t-if="doc.vehicle_id.model_name" t-field="doc.vehicle_id.model_name"/>
-                        </div>
                         <div t-if="doc.vehicle_id.license_plate">
                             <strong>Patente:</strong> <span t-field="doc.vehicle_id.license_plate"/>
                         </div>
