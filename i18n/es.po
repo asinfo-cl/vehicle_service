@@ -18,10 +18,11 @@ msgstr ""
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/workshop_vehicle.py:0
-msgid "Vehicle Record"
-msgstr "Registro de Vehículo"
+msgid "Workshop Vehicle"
+msgstr "Vehículo Taller"
 
 #. module: vehicle_service
+#. openerp-web
 #: code:addons/vehicle_service/models/workshop_vehicle.py:0
 msgid "License Plate"
 msgstr "Patente"
@@ -64,17 +65,22 @@ msgstr "Cliente"
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/workshop_vehicle.py:0
 msgid "RO History"
-msgstr "Historial RO"
+msgstr "Historial de OT"
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/workshop_vehicle.py:0
-msgid "The license plate already exists!"
-msgstr "¡La patente ya existe!"
+msgid "A vehicle with this license plate already exists."
+msgstr "Ya existe un vehículo con esta patente."
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
 msgid "Normal Sale"
 msgstr "Venta Normal"
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Repair Order"
+msgstr "Orden de Reparación"
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
@@ -94,7 +100,7 @@ msgstr "Esperando Repuestos"
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
 msgid "In Progress"
-msgstr "En Reparación"
+msgstr "En Proceso"
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
@@ -134,7 +140,7 @@ msgstr "Kilometraje"
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
 msgid "Fuel Level"
-msgstr "Combustible"
+msgstr "Nivel de Combustible"
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
@@ -149,12 +155,12 @@ msgstr "Recepción Aceptada"
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
 msgid "Acceptance Date"
-msgstr "Fecha Aceptación"
+msgstr "Fecha de Aceptación"
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
 msgid "Bodywork Status"
-msgstr "Estado Carrocería"
+msgstr "Estado de Carrocería"
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
@@ -164,17 +170,17 @@ msgstr "Accesorios"
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
 msgid "Dashboard Warning Lights"
-msgstr "Testigos Tablero"
+msgstr "Testigos de Tablero"
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
 msgid "Symptom / Fault Description"
-msgstr "Descripción del Síntoma / Falla"
+msgstr "Descripción de Síntoma / Falla"
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
 msgid "Maximum Authorized Budget"
-msgstr "Presupuesto Máximo"
+msgstr "Presupuesto Máximo Autorizado"
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
@@ -260,6 +266,11 @@ msgstr "Datos Técnicos"
 #: code:addons/vehicle_service/views/vehicle_views.xml:0
 msgid "Repair History"
 msgstr "Historial de Reparaciones"
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/vehicle_views.xml:0
+msgid "ROs"
+msgstr "OTs"
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/views/sale_order_views.xml:0
@@ -479,6 +490,11 @@ msgstr "Recepción - %s"
 #: code:addons/vehicle_service/__manifest__.py:0
 msgid "Workshop Management: Vehicles, RO, Checklist, and Tabs"
 msgstr "Gestión de Taller: Vehículos, RO, Checklist y Pestañas"
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "New"
+msgstr "Nuevo"
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/data/ir_sequence_data.xml:0

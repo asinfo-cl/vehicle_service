@@ -18,7 +18,7 @@ msgstr ""
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/workshop_vehicle.py:0
-msgid "Vehicle Record"
+msgid "Workshop Vehicle"
 msgstr ""
 
 #. module: vehicle_service
@@ -69,12 +69,17 @@ msgstr ""
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/workshop_vehicle.py:0
-msgid "The license plate already exists!"
+msgid "A vehicle with this license plate already exists."
 msgstr ""
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/sale_order.py:0
 msgid "Normal Sale"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Repair Order"
 msgstr ""
 
 #. module: vehicle_service
@@ -233,6 +238,11 @@ msgid "Category"
 msgstr ""
 
 #. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "New"
+msgstr ""
+
+#. module: vehicle_service
 #: code:addons/vehicle_service/views/vehicle_views.xml:0
 msgid "Vehicles"
 msgstr ""
@@ -260,6 +270,11 @@ msgstr ""
 #. module: vehicle_service
 #: code:addons/vehicle_service/views/vehicle_views.xml:0
 msgid "Repair History"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/vehicle_views.xml:0
+msgid "ROs"
 msgstr ""
 
 #. module: vehicle_service
