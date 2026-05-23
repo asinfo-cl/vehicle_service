@@ -18,7 +18,6 @@ msgstr ""
 
 #. module: vehicle_service
 #: code:addons/vehicle_service/models/workshop_vehicle.py:0
-#: model:workshop.vehicle,name:workshop_vehicle_model
 msgid "Vehicle Record"
 msgstr ""
 
