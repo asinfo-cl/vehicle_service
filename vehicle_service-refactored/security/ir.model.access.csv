@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_workshop_vehicle_salesman,workshop.vehicle.salesman,model_workshop_vehicle,sales_team.group_sale_salesman,1,1,1,0
+access_workshop_vehicle_manager,workshop.vehicle.manager,model_workshop_vehicle,sales_team.group_sale_manager,1,1,1,1

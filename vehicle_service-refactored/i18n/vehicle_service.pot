@@ -1,0 +1,485 @@
+# Translation template for Vehicle Service Management.
+# Copyright (C) 2026 Álvaro Jiménez Paz
+# This file is distributed under the same license as the Vehicle Service Management module.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Vehicle Service Management 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-22 00:00+0000\n"
+"PO-Revision-Date: 2026-05-22 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/workshop_vehicle.py:0
+#: model:ir.model,name:workshop_vehicle_model
+msgid "Vehicle Record"
+msgstr ""
+
+#. module: vehicle_service
+#. openerp-web
+#: code:addons/vehicle_service/models/workshop_vehicle.py:0
+msgid "License Plate"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/workshop_vehicle.py:0
+msgid "Brand"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/workshop_vehicle.py:0
+msgid "Model and Version"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/workshop_vehicle.py:0
+msgid "Manufacturing Year"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/workshop_vehicle.py:0
+msgid "Color"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/workshop_vehicle.py:0
+msgid "VIN / Chassis"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/workshop_vehicle.py:0
+msgid "Engine / Fuel Type"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/workshop_vehicle.py:0
+msgid "Customer"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/workshop_vehicle.py:0
+msgid "RO History"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/workshop_vehicle.py:0
+msgid "The license plate already exists!"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Normal Sale"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Service Type"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Diagnosis"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Waiting for Parts"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "In Progress"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Ready for Delivery"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Delivered"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Repair Status"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Vehicle"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Model"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Year"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Mileage"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Fuel Level"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Reception Date"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Reception Accepted"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Acceptance Date"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Bodywork Status"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Accessories"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Dashboard Warning Lights"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Symptom / Fault Description"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Maximum Authorized Budget"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Labor Lines"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Parts Lines"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Third-party Lines"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Supplies Lines"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Other Lines"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Labor"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Parts"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Third Party"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Supplies"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Others"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/models/sale_order.py:0
+msgid "Category"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/vehicle_views.xml:0
+msgid "Vehicles"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/vehicle_views.xml:0
+msgid "Workshop"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/vehicle_views.xml:0
+msgid "Repair Orders"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/vehicle_views.xml:0
+msgid "Identification"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/vehicle_views.xml:0
+msgid "Technical Data"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/vehicle_views.xml:0
+msgid "Repair History"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Reception"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Qty."
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Total Labor"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Total Parts"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Total Third Party"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Total Supplies"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Total Others"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Print"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Send by Email"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Accept"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Reception Data"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Vehicle Condition"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Number"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_order_views.xml:0
+msgid "Total"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_portal_templates.xml:0
+msgid "Vehicle Details:"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/sale_portal_templates.xml:0
+msgid "Print Reception"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "VEHICLE RECEPTION AND CONDITION FORM"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "SERVICE ORDER:"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "CUSTOMER:"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "ID/TAX ID:"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "PHONE:"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "VEHICLE:"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "LICENSE PLATE:"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "MILEAGE:"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "Fuel:"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "Reception Checklist"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "Accessories Included"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "Customer Acceptance"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid ""
+"The customer declares having delivered the vehicle in the condition "
+"mentioned in this form and authorizes the workshop to proceed with the "
+"requested diagnosis and/or repair."
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "Customer Name:"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "Conditions Accepted:"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "The vehicle condition and data recorded in this form are accepted."
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "Customer Signature"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/report_reception_document.xml:0
+msgid "Workshop Reception Signature"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/reception_email_template.xml:0
+msgid "Service Order Reception"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/reception_email_template.xml:0
+msgid "Reception RO {{ object.name }}"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/reception_email_template.xml:0
+msgid ""
+"Dear"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/reception_email_template.xml:0
+msgid ""
+"Please find attached the reception document for Service Order"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/reception_email_template.xml:0
+msgid ""
+"Best regards,"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/workshop_reports.xml:0
+msgid "Reception Document"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/views/workshop_reports.xml:0
+msgid "Reception - %s"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/__manifest__.py:0
+msgid "Workshop Management: Vehicles, RO, Checklist, and Tabs"
+msgstr ""
+
+#. module: vehicle_service
+#: code:addons/vehicle_service/data/ir_sequence_data.xml:0
+msgid "Workshop Repair Order Sequence"
+msgstr ""
