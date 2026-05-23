@@ -22,7 +22,6 @@ msgid "Vehicle Record"
 msgstr "Registro de Vehículo"
 
 #. module: vehicle_service
-#. openerp-web
 #: code:addons/vehicle_service/models/workshop_vehicle.py:0
 msgid "License Plate"
 msgstr "Patente"
