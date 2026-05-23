@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_workshop_vehicle_tree" model="ir.ui.view">
-        <field name="name">workshop.vehicle.tree</field>
+    <record id="view_workshop_vehicle_list" model="ir.ui.view">
+        <field name="name">workshop.vehicle.list</field>
         <field name="model">workshop.vehicle</field>
         <field name="arch" type="xml">
             <list string="Vehicles">
                 <field name="license_plate"/>
                 <field name="brand"/>
                 <field name="model_name"/>
+                <field name="year"/>
                 <field name="partner_id"/>
+                <field name="repair_order_count" string="ROs"/>
             </list>
         </field>
     </record>
@@ -19,6 +21,14 @@
         <field name="arch" type="xml">
             <form string="Vehicle">
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_repair_orders"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-wrench">
+                            <field name="repair_order_count" widget="statinfo" string="Repair Orders"/>
+                        </button>
+                    </div>
                     <group>
                         <group string="Identification">
                             <field name="license_plate"/>
@@ -35,7 +45,15 @@
                     </group>
                     <notebook>
                         <page string="Repair History">
-                            <field name="repair_order_ids" readonly="1"/>
+                            <field name="repair_order_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="date_order" widget="date"/>
+                                    <field name="repair_status" widget="badge"/>
+                                    <field name="amount_total" widget="monetary"/>
+                                    <field name="state" widget="badge"/>
+                                </list>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>
@@ -61,6 +79,8 @@
     </record>
 
     <menuitem id="menu_workshop_root" name="Workshop" sequence="10"/>
-    <menuitem id="menu_workshop_vehicles" name="Vehicles" parent="menu_workshop_root" action="action_workshop_vehicle" sequence="10"/>
-    <menuitem id="menu_workshop_repairs" name="Repair Orders" parent="menu_workshop_root" action="action_workshop_repair_orders" sequence="20"/>
+    <menuitem id="menu_workshop_vehicles" name="Vehicles" parent="menu_workshop_root"
+              action="action_workshop_vehicle" sequence="10"/>
+    <menuitem id="menu_workshop_repairs" name="Repair Orders" parent="menu_workshop_root"
+              action="action_workshop_repair_orders" sequence="20"/>
 </odoo>

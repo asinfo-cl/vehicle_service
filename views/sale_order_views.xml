@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="vehicle_service_sale_order_form_inherit" model="ir.ui.view">
+    <record id="view_order_form_workshop_inherit" model="ir.ui.view">
         <field name="name">sale.order.form.workshop</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="action_open_reception_form"
-                        string="Reception"
-                        type="object"
-                        class="oe_highlight"
+                <button name="action_open_reception_form" 
+                        string="Reception" 
+                        type="object" 
+                        class="oe_highlight" 
                         invisible="service_type != 'repair'"/>
             </xpath>
 
             <xpath expr="//field[@name='name']" position="after">
-                <field name="repair_status"
-                       invisible="service_type != 'repair'"
-                       widget="statusbar"
+                <field name="repair_status" 
+                       invisible="service_type != 'repair'" 
+                       widget="statusbar" 
                        options="{'clickable': '1'}" 
                        class="d-inline-block ms-3 align-middle" 
                        style="width: auto; height: 35px;"/>
@@ -27,8 +27,8 @@
             </xpath>
 
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="vehicle_id"
-                       invisible="service_type != 'repair'"
+                <field name="vehicle_id" 
+                       invisible="service_type != 'repair'" 
                        context="{'default_partner_id': partner_id}"/>
             </xpath>
 
@@ -120,7 +120,7 @@
         </field>
     </record>
 
-    <record id="vehicle_service_sale_order_reception_form" model="ir.ui.view">
+    <record id="view_sale_order_reception_form" model="ir.ui.view">
         <field name="name">sale.order.reception.form</field>
         <field name="model">sale.order</field>
         <field name="arch" type="xml">
@@ -158,7 +158,7 @@
         </field>
     </record>
 
-    <record id="vehicle_service_sale_order_tree_workshop" model="ir.ui.view">
+    <record id="view_order_tree_workshop" model="ir.ui.view">
         <field name="name">sale.order.list.workshop</field>
         <field name="model">sale.order</field>
         <field name="arch" type="xml">
@@ -167,10 +167,10 @@
                 <field name="date_order" widget="date"/>
                 <field name="partner_id"/>
                 <field name="vehicle_id"/>
-                <field name="repair_status" widget="badge"
-                       decoration-info="repair_status == 'diagnosis'"
-                       decoration-warning="repair_status == 'waiting_parts'"
-                       decoration-primary="repair_status == 'in_progress'"
+                <field name="repair_status" widget="badge" 
+                       decoration-info="repair_status == 'diagnosis'" 
+                       decoration-warning="repair_status == 'waiting_parts'" 
+                       decoration-primary="repair_status == 'in_progress'" 
                        decoration-success="repair_status in ('ready', 'delivered')"/>
                 <field name="amount_total" sum="Total" widget="monetary"/>
                 <field name="state" decoration-info="state == 'draft'" decoration-success="state == 'sale'" widget="badge"/>
