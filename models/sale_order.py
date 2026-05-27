@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+from odoo.tools.translate import get_translation
 
 # Sequences per category for section lines
 SECTION_SEQUENCES = {
@@ -103,10 +104,14 @@ class SaleOrder(models.Model):
 
     def _prepare_repair_section_line(self, category):
         """Return vals dict for a section line of the given category."""
+        label = SECTION_LABELS.get(category, category)
+        lang = self.env.context.get('lang', 'en_US')
+        if lang != 'en_US':
+            label = get_translation('vehicle_service', lang, label, {})
         return {
             'display_type': 'line_section',
             'sequence': SECTION_SEQUENCES.get(category, 1000),
-            'name': SECTION_LABELS.get(category, category),
+            'name': label,
             'product_id': False,
             'product_uom_id': False,
             'product_uom_qty': 0,
