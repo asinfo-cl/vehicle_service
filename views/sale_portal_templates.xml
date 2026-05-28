@@ -9,6 +9,12 @@
                         <p class="m-0">License Plate: <span t-field="sale_order.vehicle_id.license_plate"/> | Mileage: <span t-field="sale_order.current_mileage"/></p>
                     </div>
                 </div>
+                <div t-if="sale_order.symptom_description" class="row mt-2">
+                    <div class="col-12">
+                        <strong>Symptom / Fault Description:</strong>
+                        <p class="m-0" t-field="sale_order.symptom_description"/>
+                    </div>
+                </div>
             </t>
         </xpath>
     </template>

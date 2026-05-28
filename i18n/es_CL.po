@@ -158,6 +158,16 @@ msgstr "<strong>Detalles del Vehículo:</strong>"
 
 #. module: vehicle_service
 #: model_terms:ir.ui.view,arch_db:vehicle_service.sale_order_report_vehicle_data
+msgid "<strong>Symptom / Fault Description:</strong>"
+msgstr "<strong>Descripción de Síntoma / Falla:</strong>"
+
+#. module: vehicle_service
+#: model_terms:ir.ui.view,arch_db:vehicle_service.sale_order_portal_content_inherit_workshop
+msgid "<strong>Symptom / Fault Description:</strong>"
+msgstr "<strong>Descripción de Síntoma / Falla:</strong>"
+
+#. module: vehicle_service
+#: model_terms:ir.ui.view,arch_db:vehicle_service.sale_order_report_vehicle_data
 msgid "<strong>Vehicle:</strong>"
 msgstr "<strong>Vehículo:</strong>"
 
@@ -386,6 +396,11 @@ msgstr "Líneas de Repuestos"
 #: model_terms:ir.ui.view,arch_db:vehicle_service.view_sale_order_reception_form
 msgid "Print"
 msgstr "Imprimir"
+
+#. module: vehicle_service
+#: model_terms:ir.ui.view,arch_db:vehicle_service.view_order_form_workshop_inherit
+msgid "Describe the symptom or fault reported by the customer..."
+msgstr "Describa el síntoma o falla reportada por el cliente..."
 
 #. module: vehicle_service
 #: model_terms:ir.ui.view,arch_db:vehicle_service.view_order_form_workshop_inherit

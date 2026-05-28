@@ -30,6 +30,9 @@
                 <field name="vehicle_id" 
                        invisible="service_type != 'repair'" 
                        context="{'default_partner_id': partner_id}"/>
+                <field name="symptom_description"
+                       invisible="service_type != 'repair'"
+                       placeholder="Describe the symptom or fault reported by the customer..."/>
             </xpath>
 
             <!-- Ajustar ancho: 2/3 para la primera columna, 1/3 para la segunda -->
